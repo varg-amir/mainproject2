@@ -1,0 +1,39 @@
+.coundown-section{
+    background-image: url(../assets/Countdown/time-bg.webp);
+    background-position: top center;
+    background-repeat: no-repeat;
+
+}
+
+.countdown-header{
+  display: inline-block;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.countdown-header::after{
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 2px;
+    bottom: 0;
+    left: 30%;
+    border-bottom: 3px solid #e7ab3ced;
+}
+
+.countdown-paragraph{
+    line-height: 2;
+}
+
+.countdown-price{
+    font-size: 1.5rem;
+    color: #e7ab3ced;
+}
+
+.counter-number{
+    color: #e7ab3ced;
+}
+
+.counter-btn{
+    background-color: #e7ab3ced !important;
+}

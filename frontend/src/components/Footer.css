@@ -1,0 +1,20 @@
+.up-header{
+    background-color: #303030;
+}
+
+.mail-input{
+    direction: ltr;
+}
+
+.email-btn{
+    background-color: #e7ab3c !important;
+}
+
+ul li a{
+    text-decoration: none;
+
+}
+
+ul li {
+    margin-bottom: 10px;
+}

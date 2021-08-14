@@ -1,0 +1,120 @@
+/* Womens Slider */
+
+.filter-items li a {
+  color: #b2b2b2 !important;
+  font-size: larger;
+  font-weight: 400;
+}
+
+.filter-items li a p {
+  padding: 4px 0;
+}
+
+.filter-items li .active p {
+  border-bottom: 2px solid rgb(36, 36, 36);
+  color: black;
+}
+
+.slider-big-img {
+  height: 620px;
+  background-image: url("../assets/womensCategories/women-large.jpg.webp");
+  background-size: cover;
+  height: 100%;
+  background-position: center;
+}
+
+.discover-text {
+  font-weight: 400;
+  padding-bottom: 7px;
+  border-bottom: 2px solid white;
+}
+
+.price-tag {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #e7ab3c;
+}
+
+.slick-arrow.slick-prev::before {
+  color: rgb(59, 59, 59);
+}
+
+.slick-arrow.slick-next::before {
+  color: rgb(59, 59, 59);
+}
+
+/* Card image hover effect */
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-img .icon {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  transform: translate(0, 100%);
+  position: absolute;
+  /* top: 50%; */
+  bottom: 0;
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.card-img:hover .icon {
+  transform: translate(0, 0);
+}
+
+.card-img .icon li a {
+  color: #222f3d;
+  background: #fff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  min-width: 40px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.first-item{
+    background: #e7ab3c !important;
+    color: white;
+}
+
+.favorite-icon-container{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  transform: translate(0, -100%);
+  position: absolute;
+  /* top: 50%; */
+  top: 0;
+  
+  transition: all 0.3s ease-in-out;
+  
+}
+
+.favorite-icon{
+  color: #6b6b6b;
+  
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  height: 40px;
+  min-width: 60px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.card-img:hover .favorite-icon-container{
+  transform: translate(0, 0);
+}
+
+.image-size{
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}

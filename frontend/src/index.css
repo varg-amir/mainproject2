@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "iransans";
+    src: local("iransans"),
+    url("./assets/fonts/IRANSansWeb.ttf") format("truetype"); ;
+}
+
+body{
+    font-family: "iransans" !important;
+}
