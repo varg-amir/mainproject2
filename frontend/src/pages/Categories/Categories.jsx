@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import CardTemplate from "../../components/CardTemplate";
 import { MdHome } from "react-icons/md";
 import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
+import axios from 'axios'
 import "./Categories.css";
-import products from '../../Products'
+// import products from '../../Products'
 
 function Categories() {
+const [products, setProducts] = useState([])
+
+useEffect(() => {
+  const fetchProducts = async () => {
+    const { data } = await axios.get('/api/products')
+
+    setProducts(data)
+  }
+  fetchProducts()
+  
+}, [])
+
+
   return (
     <div>
       
@@ -112,6 +126,7 @@ function Categories() {
                 </div>
               </div>
               <Row className="w-100">
+              
                 {products.map((product) => (
                   <Col md={6} lg={4}>
                   <CardTemplate product={product}/>

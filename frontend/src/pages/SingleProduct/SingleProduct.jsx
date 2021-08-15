@@ -1,15 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 import SingleProductSlider from "../../components/SingleProductSlider";
 import { MdHome, MdStar, MdStarBorder, MdShoppingCart } from "react-icons/md";
 import { Container, Row, Col, Button, Tab, Tabs } from "react-bootstrap";
-import products from '../../Products'
+// import products from '../../Products'
+import axios from 'axios'
 import "./SingleProduct.css";
 
 function SingleProduct({match}) {
+  const [product, setProduct] = useState({})
 
-  const product = products.find((p) => p._id === match.params.id)
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`)
+  
+      setProduct(data)
+    }
+    fetchProduct()
+    
+  }, [match])
+
+  
   return (
     <div>
       
