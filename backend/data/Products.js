@@ -1,6 +1,5 @@
 const products = [
     {
-        _id: '1',
         name: 'پیراهن مردانه کیکی رایکی',
         image: '/images/jacket-men.webp',
         description: 'با ماشین لباسشویی و در دمای حداکثر 30 درجه سانتی گراد شستشو شود',
@@ -13,7 +12,6 @@ const products = [
         numReview: 4
     },
     {
-        _id: '2',
         name: 'تی شرت آستین کوتاه زنانه',
         image: '/images/cloth-woman-1.webp',
         description: '- چاپ مستقیم روی پارچه با تکنیک Plutsub',
@@ -26,7 +24,6 @@ const products = [
         numReview: 2
     },
     {
-        _id: '3',
         name: 'تیشرت زنانه 27 طرح دختر',
         image: '/images/cloth-woman-2.webp',
         description: '- چاپ مستقیم روی پارچه با تکنیک Plutsub',
@@ -39,7 +36,6 @@ const products = [
         numReview: 3
     },
     {
-        _id: '4',
         name: 'تی شرت زنانه افراتین طرح دختر و سگ',
         image: '/images/cloth-women-3.webp',
         description: 'با پارچه لطیف، سبک و با کیفیت',
@@ -53,7 +49,6 @@ const products = [
     },
     
     {
-        _id: '5',
         name: 'کیف رودوشی چرم جانتا',
         image: '/images/bag-women-1.webp',
         description: 'نگهدارنده بند دوشی جهت ایستادگی کامل بر روی دوش',
@@ -66,7 +61,6 @@ const products = [
         numReview: 1
     },
     {
-        _id: '6',
         name: 'کیف رودوشی مردانه',
         image: '/images/bag-men-1.webp',
         description: 'نگهدارنده بند دوشی جهت ایستادگی کامل بر روی دوش',
@@ -79,7 +73,6 @@ const products = [
         numReview: 1
     },
     {
-        _id: '7',
         name: 'کفش زرد',
         image: '/images/shoe-1.webp',
         description: 'دارای بند اضافه',
@@ -92,7 +85,6 @@ const products = [
         numReview: 1
     },
     {
-        _id: '8',
         name: 'بادگیر مردانه',
         image: '/images/jacket-men-2.webp',
         description: 'بادگیر مردانه سبز',
@@ -105,7 +97,6 @@ const products = [
         numReview: 1
     },
     {
-        _id: '9',
         name: 'ژاکت سبز',
         image: '/images/jacket-men-3.webp',
         description: 'ژاکت مردانه سبز',
@@ -119,4 +110,4 @@ const products = [
     },
 
 ]
-module.exports = products
+export default products
