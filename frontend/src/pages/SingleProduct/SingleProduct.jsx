@@ -1,25 +1,26 @@
-import React, {useState, useEffect} from "react";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import React, { useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import SingleProductSlider from "../../components/SingleProductSlider";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import { MdHome, MdStar, MdStarBorder, MdShoppingCart } from "react-icons/md";
 import { Container, Row, Col, Button, Tab, Tabs } from "react-bootstrap";
+import { listProductsDetails } from "../../actions/productActions";
 // import products from '../../Products'
-import axios from 'axios'
+
 import "./SingleProduct.css";
 
 function SingleProduct({match}) {
-  const [product, setProduct] = useState({})
+
+  const dispatch = useDispatch()
+
+  const productDetails = useSelector(state => state.productDetails)
+  const {loading, error, product} = productDetails
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`)
-  
-      setProduct(data)
-    }
-    fetchProduct()
+   dispatch(listProductsDetails(match.params.id))
     
-  }, [match])
+  }, [dispatch, match])
 
   
   return (
@@ -38,7 +39,9 @@ function SingleProduct({match}) {
             <a href="#">مردانه</a>
           </li>
         </ul>
-        <Row>
+        {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> : (
+          <div className="w-100">
+          <Row>
           <Col lg={6}>
             <SingleProductSlider product={product}/>
           </Col>
@@ -117,7 +120,6 @@ function SingleProduct({match}) {
             </div>
           </Col>
         </Row>
-
         <Tabs
           defaultActiveKey="home"
           id="uncontrolled-tab-example"
@@ -164,6 +166,11 @@ function SingleProduct({match}) {
             1
           </Tab>
         </Tabs>
+        </div>
+        )}
+        
+
+        
       </Container>
 
       

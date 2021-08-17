@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import React, { useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import CardTemplate from "../../components/CardTemplate";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import { MdHome } from "react-icons/md";
-import { Breadcrumb, Col, Container, Row } from "react-bootstrap";
-import axios from 'axios'
+import { listProducts } from "../../actions/productActions";
+import {  Col, Container, Row } from "react-bootstrap";
 import "./Categories.css";
-// import products from '../../Products'
 
 function Categories() {
-const [products, setProducts] = useState([])
+const dispatch = useDispatch()
+
+const productList= useSelector(state => state.productList)
+const {loading, error, products} = productList
 
 useEffect(() => {
-  const fetchProducts = async () => {
-    const { data } = await axios.get('/api/products')
+ dispatch(listProducts())
+}, [dispatch])
 
-    setProducts(data)
-  }
-  fetchProducts()
-  
-}, [])
 
 
   return (
@@ -125,16 +123,16 @@ useEffect(() => {
                   </select>
                 </div>
               </div>
+              {loading ? <Loader/> : error ? <Message variant='danger'>{error}</Message> : 
               <Row className="w-100">
               
-                {products.map((product) => (
-                  <Col md={6} lg={4}>
-                  <CardTemplate product={product}/>
-                </Col>
-                ))}
-                
-                
-              </Row>
+              {products.map((product) => (
+                <Col md={6} lg={4}>
+                <CardTemplate product={product}/>
+              </Col>
+              ))}
+            </Row>}
+              
             </Col>
           </Row>
         </Container>
