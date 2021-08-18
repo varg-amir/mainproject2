@@ -1,16 +1,17 @@
-import React, { useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import SingleProductSlider from "../../components/SingleProductSlider";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import { MdHome, MdStar, MdStarBorder, MdShoppingCart } from "react-icons/md";
-import { Container, Row, Col, Button, Tab, Tabs } from "react-bootstrap";
+import { Container, Row, Col, Button, Tab, Tabs,  Form } from "react-bootstrap";
 import { listProductsDetails } from "../../actions/productActions";
 // import products from '../../Products'
 
 import "./SingleProduct.css";
 
-function SingleProduct({match}) {
+function SingleProduct({match, history}) {
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -22,6 +23,10 @@ function SingleProduct({match}) {
     
   }, [dispatch, match])
 
+  const addToCartHandler = () => {
+    
+    history.push(`/shoppingcart/${match.params.id}?qty=${qty}`)
+  }
   
   return (
     <div>
@@ -62,19 +67,32 @@ function SingleProduct({match}) {
             </p>
             <div className="d-flex align-items-center border-bottom pb-4">
               <div className="ms-3">تعداد: </div>
-              <Button variant="outline-secondary ms-4">
-                <span>-</span>
-                <span className="mx-4">2</span>
-                <span>+</span>
-              </Button>
-              <Button className="yellow-button border-0 ">
+              {product.countInStock > 0 && (
+                    
+                          <Form.Control
+                            className="qty-number ms-4"
+                            as='select'
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                    
+                  )}
+              <Button type='button' disabled={product.countInStock === 0} onClick={addToCartHandler} className="yellow-button border-0 ">
                 <MdShoppingCart className="ms-2" />
                 می خرم
               </Button>
             </div>
             <div className="d-flex align-items-center mt-5">
               <span className="fw-bold ms-4">موجودی: </span>
-              <span>{product.countInStock}</span>
+              <span>{product.countInStock > 0 ? 'موجود' : 'ناموجود'}</span>
             </div>
             <div className="d-flex align-items-center mt-3">
               <span className="fw-bold ms-4">رنگ های موجود: </span>{" "}

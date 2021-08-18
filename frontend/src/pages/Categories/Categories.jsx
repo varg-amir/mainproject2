@@ -16,6 +16,7 @@ const {loading, error, products} = productList
 
 useEffect(() => {
  dispatch(listProducts())
+
 }, [dispatch])
 
 

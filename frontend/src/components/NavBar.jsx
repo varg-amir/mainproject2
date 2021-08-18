@@ -12,6 +12,7 @@ function NavBar() {
             <Nav.Link href="/categories">محصولات</Nav.Link>
             <Nav.Link href="/shoppingcart">خرید</Nav.Link>
             <Nav.Link href="/login">وارد شدن</Nav.Link>
+            <Nav.Link href="/shoppingcart">سبد خرید</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

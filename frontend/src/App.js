@@ -21,9 +21,8 @@ function App() {
             < Categories />
           </Route>
           
-          <Route exact path="/shoppingcart">
-            < ShoppingCart />
-          </Route>
+          <Route  path="/shoppingcart/:id?" component={ShoppingCart}/>
+           
           <Route path='/singleproduct/:id' component={SingleProduct}/>
           <Route exact path="/login">
             < Login />
