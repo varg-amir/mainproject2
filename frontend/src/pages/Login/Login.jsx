@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../../components/Message'
+import Loader from '../../components/Loader'
+import { login } from '../../actions/userAction'
 import {MdHome} from 'react-icons/md'
 import "./Login.css";
 
-function Login() {
+function Login({history, location}) {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector((state) => state.userLogin)
+  const { loading, error, userInfo } = userLogin
+
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect)
+    }
+  }, [history, userInfo, redirect])
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(login(email, password))
+  }
+
   return (
     <div>
       <Container className="login-container ">
@@ -21,23 +48,29 @@ function Login() {
           <Row>
             <Col lg={3}></Col>
             <Col lg={6}>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+            {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
+              <Form onSubmit={submitHandler}>
+                <Form.Group className="mb-3" controlId="email">
                   <Form.Label>نام کاربری یا آدرس ایمیل</Form.Label>
                   <Form.Control
                     className="rounded-0"
                     size="lg"
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="آدرس ایمیل"
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="password">
                   <Form.Label>رمز عبور</Form.Label>
                   <Form.Control
                     className="rounded-0"
                     size="lg"
+                    value={password}
                     type="password"
+                    onChange={(e)=> setPassword(e.target.value)}
                     placeholder="رمز عبور"
                   />
                 </Form.Group>

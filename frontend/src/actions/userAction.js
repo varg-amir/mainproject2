@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS } from '../constants/userConstants'
+import { USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_RESET, USER_LIST_SUCCESS, USER_LOGIN_FAIL, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT } from '../constants/userConstants'
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -32,6 +32,50 @@ export const login = (email, password) => async (dispatch) => {
           error.response && error.response.data.message
             ? error.response.data.message
             : error.message,
+      })
+    }
+  }
+
+  export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo')
+   
+    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: USER_LIST_RESET })
+  }
+
+  export const listUsers = () => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: USER_LIST_REQUEST,
+      })
+  
+      const {
+        userLogin: { userInfo }, 
+      } = getState()
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+  
+      const { data } = await axios.get(`/api/users`, config)
+  
+      dispatch({
+        type: USER_LIST_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === 'Not authorized, token failed') {
+        dispatch(logout())
+      }
+      dispatch({
+        type: USER_LIST_FAIL,
+        payload: message,
       })
     }
   }
