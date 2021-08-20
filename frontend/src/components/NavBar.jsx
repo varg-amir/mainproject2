@@ -17,14 +17,19 @@ function NavBar() {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" expand="md">
         <Container className="d-flex justify-content-between">
           <Navbar.Brand href="#home">لباس فروش</Navbar.Brand>
-          <Nav>
-            <Nav.Link href="/">خانه</Nav.Link>
-            <Nav.Link href="/categories">محصولات</Nav.Link>
-            <Nav.Link href="/shoppingcart">خرید</Nav.Link>
-          </Nav>
+          <div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav>
+              <Nav.Link href="/">خانه</Nav.Link>
+              <Nav.Link href="/categories">محصولات</Nav.Link>
+              <Nav.Link href="/shoppingcart">خرید</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+          </div>
           <Nav>
             <Nav.Link href="/shoppingcart">
               <MdShoppingCart className="ms-1" />
@@ -49,7 +54,6 @@ function NavBar() {
                 <LinkContainer to="/admin/userlist">
                   <NavDropdown.Item>لیست کاربرها</NavDropdown.Item>
                 </LinkContainer>
-
                 <LinkContainer to="/admin/productlist">
                   <NavDropdown.Item>لیست محصولات</NavDropdown.Item>
                 </LinkContainer>

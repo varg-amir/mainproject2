@@ -8,6 +8,8 @@ import { listProducts } from "../../actions/productActions";
 import {  Col, Container, Row } from "react-bootstrap";
 import "./Categories.css";
 
+
+
 function Categories() {
 const dispatch = useDispatch()
 
@@ -99,8 +101,42 @@ useEffect(() => {
                 </ul>
               </div>
 
-              <h4 className="pb-3 mt-4">قیمت</h4>
+              <div className="border mt-4">
+                <h5 className="p-3  bg-light">زیر دسته ها</h5>
+                <ul class="list-group p-0 m-0 sub-category">
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input ml-2"
+                      type="checkbox"
+                      value=""
+                      aria-label="..."
+                    />
+                    لباس
+                  </li>
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input ml-2"
+                      type="checkbox"
+                      value=""
+                      aria-label="..."
+                    />
+                    کیف
+                  </li>
+                  <li class="list-group-item">
+                    <input
+                      class="form-check-input ml-2"
+                      type="checkbox"
+                      value=""
+                      aria-label="..."
+                    />
+                    کفش
+                  </li>
+                  
+                </ul>
+              </div>
 
+              <h4 className="pb-3 mt-4">قیمت</h4>
+               
               <input
                 type="range"
                 class="form-range"

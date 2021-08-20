@@ -76,7 +76,7 @@ function Footer() {
               md={4}
               className="d-flex flex-column justify-content-center align-items-center"
             >
-              <h5 class="text-white mb-3">خرید</h5>
+              <h5 class="text-white mb-3">دسته</h5>
 
               <ul class="text-decoration-none mb-0">
                 <li>
@@ -101,22 +101,22 @@ function Footer() {
               md={4}
               className="d-flex flex-column justify-content-center align-items-center"
             >
-              <h5 class="text-white mb-3">خرید</h5>
+              <h5 class="text-white mb-3">منو ها</h5>
 
               <ul class="text-decoration-none mb-0">
                 <li>
                   <a href="#!" class="text-white text-muted">
-                    زنانه
+                    خانه
                   </a>
                 </li>
                 <li>
                   <a href="#!" class="text-white text-muted">
-                    مردانه
+                    محصولات
                   </a>
                 </li>
                 <li>
                   <a href="#!" class="text-white text-muted">
-                    بچگانه
+                    خرید
                   </a>
                 </li>
                 <li></li>

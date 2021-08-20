@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Card } from "react-bootstrap";
 import "./WomensSlider.css";
-import Cloth2 from "../assets/MensCategories/jacket.webp";
+
 import Slider from "react-slick";
 import { MdAddShoppingCart, MdExplore, MdFavoriteBorder } from "react-icons/md";
 import './MensSlider.css'
